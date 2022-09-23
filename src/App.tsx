@@ -1,24 +1,17 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import Calculator from "./components/Calculator";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <div className="bg-pink-200 h-screen w-screen flex flex-col">
+      <header>
+        <h1 className="h-16 text-4xl p-4 text-pink-800 font-semibold">
+          GST Calculator
+        </h1>
       </header>
+      <main className="flex justify-center items-center flex-1 -mt-16">
+        <Calculator />
+      </main>
     </div>
   );
 }
