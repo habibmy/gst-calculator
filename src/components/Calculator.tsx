@@ -1,11 +1,11 @@
-import React, { ChangeEventHandler, useState, useEffect } from "react";
+import React, { ChangeEventHandler, useState } from "react";
 
 const Calculator = () => {
   const [excludingGST, setExcludingGST] = useState(0);
   const [includingGST, setIncludingGST] = useState(0);
   const [gst, setGST] = useState(18);
 
-  const calculateGST: ChangeEventHandler<HTMLInputElement> = (e) => {
+  const calculateIncludingGST: ChangeEventHandler<HTMLInputElement> = (e) => {
     const { value } = e.target;
     const excludingGST = parseFloat(value ?? "0");
     setExcludingGST(excludingGST);
@@ -25,9 +25,16 @@ const Calculator = () => {
     setExcludingGST(total);
   };
 
-  useEffect(() => {
-    calculateGST({ target: { value: excludingGST } } as any);
-  }, [gst]);
+  const gstChangeHandler: ChangeEventHandler<HTMLSelectElement> = (e) => {
+    const { value } = e.target;
+    setGST(Number(value));
+    const gst = Number(value);
+    const gstAmount = gst / 100;
+    const gstAmountValue = gstAmount * excludingGST;
+    let total = gstAmountValue + excludingGST;
+    total = Math.round((total + Number.EPSILON) * 100) / 100;
+    setIncludingGST(total);
+  };
 
   return (
     <div className="p-8 max-w-md bg-white bg-opacity-50 rounded-md">
@@ -38,7 +45,7 @@ const Calculator = () => {
             className="text-4xl w-full"
             type="number"
             value={String(excludingGST)}
-            onChange={calculateGST}
+            onChange={calculateIncludingGST}
           />
           {/* e => setExcludingGST(Number(e.target.value))   */}
         </div>
@@ -58,7 +65,7 @@ const Calculator = () => {
         <select
           className="w-full text-3xl text-center"
           value={gst}
-          onChange={(e) => setGST(Number(e.target.value))}
+          onChange={gstChangeHandler}
         >
           <option value={5}>5%</option>
           <option value={12}>12%</option>
