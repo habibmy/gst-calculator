@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.css": "/static/css/main.2ff47df8.css",
-    "main.js": "/static/js/main.d5822d6a.js",
-    "index.html": "/index.html",
-    "main.2ff47df8.css.map": "/static/css/main.2ff47df8.css.map",
-    "main.d5822d6a.js.map": "/static/js/main.d5822d6a.js.map"
+    "main.css": "/gst-calculator/static/css/main.2ff47df8.css",
+    "main.js": "/gst-calculator/static/js/main.d5822d6a.js",
+    "index.html": "/gst-calculator/index.html",
+    "main.2ff47df8.css.map": "/gst-calculator/static/css/main.2ff47df8.css.map",
+    "main.d5822d6a.js.map": "/gst-calculator/static/js/main.d5822d6a.js.map"
   },
   "entrypoints": [
     "static/css/main.2ff47df8.css",
